@@ -1,15 +1,12 @@
-name: Monthly Publish
-
+name: monthly_publish
 on:
   schedule:
     - cron: '0 0 1 * *'
   workflow_dispatch:
-
 env:
   SOURCE_LANG: ja
-  TRANSLATE_LANGS: "en es pt hi id zh-Hant"
-  TARGET_COUNT: 10
-
+  TRANSLATE_LANGS: en,es,pt,hi,id,zh-Hant
+  TARGET_COUNT: 30
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,27 +16,15 @@ jobs:
         lang: [ja, en, es, pt, hi, id, zh-Hant]
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          fi
-      - name: Select latest stories
-        run: |
-          python select_latest_stories.py --level ${{ matrix.level }} --lang ${{ matrix.lang }} --count ${{ env.TARGET_COUNT }}
-      - name: Build or translate story sets
-        run: |
-          python build_story_set.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
-      - name: Build EPUBs
-        run: |
-          python build_epub.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
-      - name: Generate CSV metadata
-        run: |
-          python generate_metadata_csv.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
-      - name: Upload to Google Play Books
-        run: |
-          python upload_to_gpb.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
+      - run: pip install -r requirements.txt
+      - name: Select latest
+        run: python scripts/select_latest.py
+      - name: Build JA story list
+        if: matrix.lang == 'ja'
+        run: python scripts/build_story_set.py --level ${{ matrix.level }}
+      - name: Translate set
+        if: matrix.lang != 'ja' && contains(env.TRANSLATE_LANGS, matrix.lang)
+        run: python scripts/translate_story_set.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
+      - run: bash scripts/build_epub.sh ${{ matrix.lang }} ${{ matrix.level }}
+      - run: python scripts/gen_csv.py --lang ${{ matrix.lang }} --level ${{ matrix.level }}
+      - run: python scripts/upload_playbooks.py --lang ${{ matrix.lang }} --level ${{ matrix.level }}
