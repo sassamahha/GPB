@@ -1,0 +1,33 @@
+name: Daily Fetch
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+      - name: Fetch StudyRiver data
+        run: python fetch_studyriver.py
+      - name: Generate Stories
+        run: python generate_story.py
+      - name: Translate Stories
+        run: python translate.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Update stories" || echo "No changes to commit"
+          git push
