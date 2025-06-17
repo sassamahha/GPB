@@ -1,0 +1,45 @@
+name: Monthly Publish
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+env:
+  SOURCE_LANG: ja
+  TRANSLATE_LANGS: "en es pt hi id zh-Hant"
+  TARGET_COUNT: 10
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        level: [l1, l2, l3]
+        lang: [ja, en, es, pt, hi, id, zh-Hant]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+      - name: Select latest stories
+        run: |
+          python select_latest_stories.py --level ${{ matrix.level }} --lang ${{ matrix.lang }} --count ${{ env.TARGET_COUNT }}
+      - name: Build or translate story sets
+        run: |
+          python build_story_set.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
+      - name: Build EPUBs
+        run: |
+          python build_epub.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
+      - name: Generate CSV metadata
+        run: |
+          python generate_metadata_csv.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
+      - name: Upload to Google Play Books
+        run: |
+          python upload_to_gpb.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
