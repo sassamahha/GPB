@@ -43,7 +43,6 @@ def rewrite_article(title: str, body: str, level: str) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--level', default='l3')
-    parser.add_argument('--json-latest', action='store_true')
     args = parser.parse_args()
 
     articles = load_articles()
