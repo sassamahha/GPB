@@ -13,6 +13,12 @@ This project automates fetching StudyRiver articles, generating stories in three
 - `PB_SFTP_KEY` - SSH private key for SFTP.
 - `NEWS_API_KEY` - optional; not required when fetching public WordPress articles.
 
+## Story Generation
+Set the `OPENAI_API_KEY` environment variable before running `scripts/generate_story.py`.
+The script now sends each article's title and content to the OpenAI ChatGPT API
+(model defined by `OPENAI_MODEL`, default `gpt-3.5-turbo`) and writes the
+rewritten story into `stories/ja/<level>/`.
+
 ## Workflows
 1. **daily_fetch** (`21:00 JST`)
    - Fetch public articles from StudyRiver using the WordPress REST API.
