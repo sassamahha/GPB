@@ -1,32 +1,29 @@
-# GPB
+# Road to 2112 – GPB Automation
 
-This project automates fetching StudyRiver articles, generating stories in three reading levels, translating them into multiple languages, and publishing monthly EPUB bundles to Google Play Books.
+This repo **automates**  
+1. fetching the latest StudyRiver article (21:00 JST)  
+2. rewriting it into kid-friendly stories (L1 / L2 / L3)  
+3. translating them into Tier-A languages  
+4. compiling monthly EPUB bundles ready for Google Play Books
 
-## Environment Variables
-- `SOURCE_LANG` - source language for original stories (default `ja`).
-- `TRANSLATE_LANGS` - comma separated list of languages to translate (Core6 by default).
-- `TARGET_COUNT` - maximum number of stories to include in monthly release.
+## Workflow Overview
+| Action | Schedule | Output |
+|--------|----------|--------|
+| `daily_fetch` | 21:00 JST daily | `stories/<lang>/<level>/YYYY/MM/*.md` |
+| `monthly_epub` | 1st 00:00 UTC | `dist/Rt2112_<level>_<lang>_<YYYYMM>.epub` |
 
-## GitHub Secrets
-- `OPENAI_API_KEY` - used for text generation.
-- `PB_SFTP_USER` - SFTP user for Google Play Books.
-- `PB_SFTP_KEY` - SSH private key for SFTP.
-- `NEWS_API_KEY` - optional; not required when fetching public WordPress articles.
+## Environment / Secrets
+- `OPENAI_API_KEY` – required
+- `TRANSLATE_LANGS` – e.g. `en,es,pt,fr,id,zh-hant`
+- `TARGET_COUNT` – max stories per bundle (default 31)
+- *(Publishing)*
+  - `PB_SFTP_USER`, `PB_SFTP_KEY`
 
-## Story Generation
-Set the `OPENAI_API_KEY` environment variable before running `scripts/generate_story.py`.
-The script now sends each article's title and content to the OpenAI ChatGPT API
-(model defined by `OPENAI_MODEL`, default `gpt-3.5-turbo`) and writes the
-rewritten story into `stories/ja/<level>/`.
-
-## Workflows
-1. **daily_fetch** (`21:00 JST`)
-   - Fetch public articles from StudyRiver using the WordPress REST API.
-   - Generate L3 stories then rewrite to L2 and L1.
-   - Commit the results to the repository.
-2. **monthly_publish** (`1st 00:00 UTC`)
-   - Select up to `TARGET_COUNT` latest stories generated after 18:45 JST including kids articles.
-   - Build and translate story sets for Core6 languages.
-   - Package EPUBs and metadata CSV and upload to Google Play Books. The `On Sale Date` field is left blank so the books become available as soon as Google processes them.
-
-To add more translation languages, append the code to `TRANSLATE_LANGS` in the workflow or environment configuration.
+## Local test
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python scripts/fetch_latest.py
+python scripts/story_from_article.py tmp/article.json stories/
+python scripts/translate.py stories/
+python scripts/compile_epubs.py stories/ dist/

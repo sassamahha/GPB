@@ -1,23 +1,33 @@
 name: monthly_epub
 on:
+  # 毎月 1 日 00:00 UTC（＝JST 09:00）
   schedule:
     - cron: '0 0 1 * *'
+
 jobs:
   build-epub:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
-      - name: Install deps
-        run: pip install openai ebooklib markdown python-dateutil
 
-      - name: Compile last-month EPubs
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # ── 依存 ───────────────────────────────
+      - name: Install deps
+        run: |
+          pip install ebooklib markdown python-dateutil regex jaconv
+
+      # ── 前月分 EPUB を束ねる ────────────────
+      - name: Compile last-month EPUBs
         env:
           TARGET_COUNT: ${{ vars.TARGET_COUNT }}
         run: python scripts/compile_epubs.py stories/ dist/
 
-      # ↓⑥を実装する時はここで gplaybooks へ SFTP
+      # ──（あとで SFTP に置き換え）───────────
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
