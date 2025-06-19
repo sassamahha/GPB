@@ -1,3 +1,6 @@
-requests
-paramiko
-openai
+openai>=1.13.3
+requests>=2.31
+ebooklib>=0.18
+markdown>=3.5
+python-dateutil>=2.9
+regex>=2024.5

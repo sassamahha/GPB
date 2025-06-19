@@ -3,14 +3,38 @@ on:
   schedule:
     - cron: '0 12 * * *'
 jobs:
-  fetch:
+  fetch-and-generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install -r requirements.txt
-      - run: python scripts/fetch_studyriver.py
-      - run: python scripts/generate_story.py --level l3 --json-latest
-      - run: python scripts/translate.py --from l3 --to l2,l1
-      - uses: EndBug/add-and-commit@v9
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          message: 'daily fetch ${{ github.run_id }}'
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install openai requests python-dateutil pyyaml
+
+      - name: Fetch latest JP article
+        env:
+          WP_API: https://studyriver.jp/wp-json/wp/v2/posts?per_page=1
+        run: python scripts/fetch_latest.py  # -> tmp/article.json
+
+      - name: Story L3 → L2/L1
+        run: python scripts/story_from_article.py tmp/article.json stories/
+
+      - name: Translate Tier-A langs
+        env:
+          TRANSLATE_LANGS: ${{ vars.TRANSLATE_LANGS }}
+        run: python scripts/translate.py stories/
+
+      - name: Commit
+        run: |
+          git config user.name "gpbot"
+          git config user.email "gpbot@example.com"
+          git add stories
+          git commit -m "Daily stories $(date -u '+%Y-%m-%d')" || echo "No changes"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

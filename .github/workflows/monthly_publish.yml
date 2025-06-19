@@ -1,30 +1,25 @@
-name: monthly_publish
+name: monthly_epub
 on:
   schedule:
     - cron: '0 0 1 * *'
-  workflow_dispatch:
-env:
-  SOURCE_LANG: ja
-  TRANSLATE_LANGS: en,es,pt,hi,id,zh-Hant
-  TARGET_COUNT: 30
 jobs:
-  publish:
+  build-epub:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        level: [l1, l2, l3]
-        lang: [ja, en, es, pt, hi, id, zh-Hant]
     steps:
       - uses: actions/checkout@v4
-      - run: pip install -r requirements.txt
-      - name: Select latest
-        run: python scripts/select_latest.py
-      - name: Build JA story list
-        if: matrix.lang == 'ja'
-        run: python scripts/build_story_set.py --level ${{ matrix.level }}
-      - name: Translate set
-        if: matrix.lang != 'ja' && contains(env.TRANSLATE_LANGS, matrix.lang)
-        run: python scripts/translate_story_set.py --level ${{ matrix.level }} --lang ${{ matrix.lang }}
-      - run: bash scripts/build_epub.sh ${{ matrix.lang }} ${{ matrix.level }}
-      - run: python scripts/gen_csv.py --lang ${{ matrix.lang }} --level ${{ matrix.level }}
-      - run: python scripts/upload_playbooks.py --lang ${{ matrix.lang }} --level ${{ matrix.level }}
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Install deps
+        run: pip install openai ebooklib markdown python-dateutil
+
+      - name: Compile last-month EPubs
+        env:
+          TARGET_COUNT: ${{ vars.TARGET_COUNT }}
+        run: python scripts/compile_epubs.py stories/ dist/
+
+      # ↓⑥を実装する時はここで gplaybooks へ SFTP
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: epub-bundle
+          path: dist/
