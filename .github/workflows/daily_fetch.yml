@@ -1,8 +1,8 @@
 name: daily_fetch
 on:
   schedule:
-    # 毎日 09:00 JST 実行
-    - cron: '0 0 * * *'
+    # 毎日 07:00 JST 実行
+    - cron: '0 22 * * *'
 
   # 手動トリガーも残す
   workflow_dispatch:
