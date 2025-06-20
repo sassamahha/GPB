@@ -1,8 +1,12 @@
 name: daily_fetch
 on:
   schedule:
-    # 20:30 JST = 11:30 UTC なら翻訳投稿を確実に待てる
-    - cron: '30 11 * * *'
+    # 毎日 09:00 JST 実行
+    - cron: '0 0 * * *'
+
+  # 手動トリガーも残す
+  workflow_dispatch:
+  
 jobs:
   fetch-and-generate:
     runs-on: ubuntu-latest
