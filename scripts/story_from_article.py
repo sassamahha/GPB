@@ -15,12 +15,12 @@ from openai import OpenAI
 
 # ----------------------------------------------------------------------
 # モデル設定 ── Large 相当（mini→large へ格上げ）
-MODEL_NAME = "gpt-4o"        # = gpt-4o-large 相当
-TEMPERATURE_L3 = 0.75        # 文学性を引き出す
+MODEL_NAME = "gpt-4o-mini"        
+TEMPERATURE_L3 = 0.75       
 TEMPERATURE_L2 = 0.50
 TEMPERATURE_L1 = 0.40
 
-client = OpenAI()            # OPENAI_API_KEY は環境変数でセット
+client = OpenAI()   
 
 # ----------------------------------------------------------------------
 PATTERNS = {
