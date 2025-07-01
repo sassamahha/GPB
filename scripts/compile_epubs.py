@@ -13,6 +13,20 @@ COVERS = {
     "l3": "assets/cover_l3.jpg",
 }
 
+AFTERWORD_DIR = pathlib.Path("assets/afterwords")
+
+    aft_path = AFTERWORD_DIR / f"{lang}.md"
+    if not aft_path.exists():                     # フォールバック
+        aft_path = AFTERWORD_DIR / "en.md"
+
+    aft_md   = aft_path.read_text(encoding="utf-8")
+    aft_html = md_to_html(aft_md.strip())
+    aft_page = epub.EpubHtml(title="Afterword",
+                            file_name="afterword.xhtml",
+                            content=aft_html)
+    book.add_item(aft_page)
+    chapters.append(aft_page)
+
 def md_to_html(md_text: str) -> str:
     return markdown.markdown(md_text, extensions=["extra"])
 
@@ -28,13 +42,31 @@ def build_epub(lang: str, level: str, md_paths: list[pathlib.Path], outdir: path
 
     chapters = []
     for path in md_paths:
-        _, body = path.read_text(encoding="utf-8").split("\n---\n", 1)
-        html = md_to_html(body.lstrip())
-        chap = epub.EpubHtml(title=path.stem, file_name=f"{path.stem}.xhtml", content=html)
+        text = path.read_text(encoding="utf-8")
+        meta = json.loads(text.splitlines()[1])    
+        body = text.split("\n---\n", 1)[1].lstrip()
+
+        date = meta["created_at"][:10].replace("-", "")
+        chap_title = f"{date}_{level.upper()}_{meta['title']}"
+
+        html = md_to_html(body)
+        chap = epub.EpubHtml(
+            title=chap_title,
+            file_name=f"{path.stem}.xhtml",
+            content=html
+        )
         book.add_item(chap)
         chapters.append(chap)
 
-    book.toc = chapters
+    # ── Afterword 追加 ────────────────────────────
+    aft_md   = AFTERWORDS.get(lang, AFTERWORDS["en"])
+    aft_html = md_to_html(aft_md.strip())
+    aft_page = epub.EpubHtml(title="Afterword", file_name="afterword.xhtml", content=aft_html)
+    book.add_item(aft_page)
+    chapters.append(aft_page)
+
+    # TOC & spine
+    book.toc   = chapters
     book.spine = ["nav"] + chapters
     book.add_item(epub.EpubNcx())
     book.add_item(epub.EpubNav())
