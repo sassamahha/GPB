@@ -1,7 +1,7 @@
 # Road to 2112 – GPB Automation
 
 This repo **automates**  
-1. fetching the latest StudyRiver article (21:00 JST)  
+1. fetching the latest StudyRiver article (9:00 JST)  
 2. rewriting it into kid-friendly stories (L1 / L2 / L3)  
 3. translating them into Tier-A languages  
 4. compiling monthly EPUB bundles ready for Google Play Books
@@ -9,7 +9,7 @@ This repo **automates**
 ## Workflow Overview
 | Action | Schedule | Output |
 |--------|----------|--------|
-| `daily_fetch` | 21:00 JST daily | `stories/<lang>/<level>/YYYY/MM/*.md` |
+| `daily_fetch` | 9:00 JST daily | `stories/<lang>/<level>/YYYY/MM/*.md` |
 | `monthly_epub` | 1st 00:00 UTC | `dist/Rt2112_<level>_<lang>_<YYYYMM>.epub` |
 
 ## Environment / Secrets
