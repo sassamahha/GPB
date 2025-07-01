@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""前月分の MD を EPUB に束ねる"""
+"""前月分の .md を EPUB に束ねる"""
 
 import argparse
-import os, pathlib, datetime as dt, json, markdown, ebooklib
+import os, pathlib, datetime as dt, json, markdown
 from ebooklib import epub
 from dateutil import relativedelta, tz
 
-# ── 定数 ─────────────────────────────────────────────
+# ── 定数 ────────────────────────────────────────────
 TARGET_COUNT = int(os.getenv("TARGET_COUNT", "31"))
 
 COVERS = {
@@ -15,18 +15,18 @@ COVERS = {
     "l3": "assets/cover_l3.jpg",
 }
 
-AFTERWORD_DIR = pathlib.Path("assets/afterwords")   # ← afterwords/*.md を置いたフォルダ
-# ───────────────────────────────────────────────────
+AFTERWORD_DIR = pathlib.Path("assets/afterwords")  # afterwords/<lang>.md を配置
+# ─────────────────────────────────────────────────
 
 def md_to_html(md_text: str) -> str:
     return markdown.markdown(md_text, extensions=["extra"])
 
-# ───────────────────────────────────────────────────
+# ─────────────────────────────────────────────────
 def build_epub(lang: str, level: str,
                md_paths: list[pathlib.Path],
                outdir: pathlib.Path) -> None:
 
-    # --- 基本メタ ------------------------------------------------------
+    # 基本メタ
     book = epub.EpubBook()
     book.set_identifier(f"rt2112-{lang}-{level}-{md_paths[0].stem}")
     book.set_title(f"Road to 2112 – {level.upper()} {lang.upper()} {md_paths[0].parent.parent.name}")
@@ -39,46 +39,51 @@ def build_epub(lang: str, level: str,
     chapters = []
     for path in md_paths:
         text = path.read_text(encoding="utf-8")
-        meta = json.loads(text.splitlines()[1])         # 1 行目の JSON
+        meta = json.loads(text.splitlines()[1])
         body = text.split("\n---\n", 1)[1].lstrip()
 
-        date = meta["created_at"][:10].replace("-", "") # 20250620
+        date = meta["created_at"][:10].replace("-", "")
         chap_title = f"{date}_{level.upper()}_{meta['title']}"
 
         html = md_to_html(body)
+        if not html.strip():                 # 空ページガード
+            html = "<p>&nbsp;</p>"
+
         chap = epub.EpubHtml(title=chap_title,
                              file_name=f"{path.stem}.xhtml",
                              content=html)
         book.add_item(chap)
         chapters.append(chap)
 
-    # --- Afterword -----------------------------------------------------
+    # Afterword
     aft_path = AFTERWORD_DIR / f"{lang}.md"
-    if not aft_path.exists():           # 言語ファイルが無ければ英語を使用
+    if not aft_path.exists():
         aft_path = AFTERWORD_DIR / "en.md"
 
-    aft_md   = aft_path.read_text(encoding="utf-8")
-    aft_html = md_to_html(aft_md.strip())
+    aft_md = aft_path.read_text(encoding="utf-8").strip()
+    if not aft_md:
+        aft_md = "_No afterword content._"
 
+    aft_html = md_to_html(aft_md)
     aft_page = epub.EpubHtml(title="Afterword",
                              file_name="afterword.xhtml",
                              content=aft_html)
     book.add_item(aft_page)
     chapters.append(aft_page)
 
-    # --- TOC & spine ---------------------------------------------------
+    # TOC & spine
     book.toc   = chapters
     book.spine = ["nav"] + chapters
     book.add_item(epub.EpubNcx())
     book.add_item(epub.EpubNav())
 
-    # --- 出力 ----------------------------------------------------------
+    # 出力
     outdir.mkdir(parents=True, exist_ok=True)
     fn = outdir / f"Rt2112_{level}_{lang}_{dt.datetime.now():%Y%m}.epub"
     epub.write_epub(str(fn), book)
     print("📚 ", fn)
 
-# ───────────────────────────────────────────────────
+# ─────────────────────────────────────────────────
 def main(stories_root: str = "stories", outdir: str = "dist"):
     parser = argparse.ArgumentParser()
     parser.add_argument("--include-current", action="store_true",
@@ -113,6 +118,6 @@ def main(stories_root: str = "stories", outdir: str = "dist"):
                            mds[:TARGET_COUNT],
                            pathlib.Path(outdir))
 
-# ───────────────────────────────────────────────────
+# ─────────────────────────────────────────────────
 if __name__ == "__main__":
     main()
