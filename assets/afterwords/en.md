@@ -22,5 +22,5 @@ Also, I share future-themed content on "Studyriver." Please feel free to check i
 
 My social media is mostly casual chatter. Feel free to follow!
 
-▼ [[https://x.com/sassamahha0](https://x.com/sassamahha0)] : X account @sassamahha0  
-▽ [[https://instagram.com/sassamahha](https://instagram.com/sassamahha)] : Instagram account @sassamahha
+▶︎ [[https://x.com/sassamahha0](https://x.com/sassamahha0)] : X account @sassamahha0  
+▷ [[https://instagram.com/sassamahha](https://instagram.com/sassamahha)] : Instagram account @sassamahha
