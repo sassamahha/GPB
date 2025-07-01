@@ -27,7 +27,7 @@ jobs:
       - name: Compile last-month EPUBs
         env:
           TARGET_COUNT: ${{ vars.TARGET_COUNT }}
-        run: python scripts/compile_epubs.py stories/ dist/
+        run: python scripts/compile_epubs.py
 
       # ──（あとで SFTP に置き換え）───────────
       - name: Upload artifacts
