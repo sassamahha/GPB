@@ -1,11 +1,9 @@
 name: daily_fetch
 on:
   schedule:
-    # 毎日 10:00 JST（＝UTC01:00）と 21:00 JST（＝UTC12:00）に実行
-    - cron: '0 1,12 * * *'
-
-  # 手動トリガーも残す
-  workflow_dispatch:
+    - cron: '0 1 * * *'   # JST 10:00
+    - cron: '0 12 * * *'  # JST 21:00
+  workflow_dispatch:　# 手動トリガー
   
 jobs:
   fetch-and-generate:
