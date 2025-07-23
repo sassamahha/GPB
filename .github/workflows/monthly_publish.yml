@@ -1,9 +1,9 @@
 name: monthly_epub
 on:
-  # 毎月 1 日 00:00 UTC（＝JST 09:00）
+  # 毎月 1日・15日 の 00:00 UTC（＝JST 09:00）
   schedule:
-    - cron: '0 0 1 * *'
-  # 手動トリガーも残す
+    - cron: '0 0 1 * *'   # JST 09:00 毎月1日
+    - cron: '0 0 15 * *'  # JST 09:00 毎月15日
   workflow_dispatch:
 
 jobs:
