@@ -3,7 +3,7 @@ on:
   # 毎月 1日・15日 の 00:00 UTC（＝JST 09:00）
   schedule:
     - cron: '0 0 1 * *'   # JST 09:00 毎月1日
-    - cron: '0 0 15 * *'  # JST 09:00 毎月15日
+    # - cron: '0 0 15 * *'  # JST 09:00 毎月15日 8/2以降に対応
   workflow_dispatch:
 
 jobs:
