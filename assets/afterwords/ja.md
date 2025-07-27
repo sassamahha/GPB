@@ -10,16 +10,20 @@
 
 「これから先、自分はどんな未来を選ぶのだろう？」と、そっと立ち止まりたくなるような物語たちです。 
 
--
+---
 
-この物語を読んでくださって、ありがとうございます。 
-続きのお話や、ちょっとした裏話、新しい作品の情報は、Ko-fiやSubstackで配信している個人ニュースレターでお届けしています。よろしければ、ぜひご登録ください。 
+ご覧いただきありがとうございます。
 
-また、未来について考えるメディア「Studyriver」でも、さまざまなテーマを発信しています。ぜひのぞいてみてください。
+**Rt2112シリーズは「レベル × 言語」より出版されています。**
+- レベル
+	- L1: 幼児〜小学校低学年向け
+	- L2: 小学校高学年向け
+	- L3: 一般向け
+- 言語
+	- EN / JA / ES / PT / DE / FR / IT
 
-◎活動リンク集・https://ko-fi.com/sassamahha
-○メルマガ・https://sassamahha.substack.com/ 
+次のストーリー、レベル、言語はこちら（定期的に更新）
+▶ [https://hub.sassamahha.me](https://hub.sassamahha.me)
 
-SNSはほぼ雑談です。フォローお待ちしています！
-▶︎[https://x.com/sassamahha0] : Xアカウント @sassamahha0 
-▷[https://instagram.com/sassamahha] : Instagramアカウント @sassamahha
+YouTubeではV-LOGや舞台裏の様子も公開しています。ぜひご登録ください。
+▶ [https://www.youtube.com/@sassamahha](https://www.youtube.com/@sassamahha)
