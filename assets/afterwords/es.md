@@ -1,26 +1,30 @@
-## Posfacio
+## Epílogo
 
-**Una historia un poco extraña tejida en un mundo donde humanos y robots conviven.**
+**Una historia un poco misteriosa en un mundo donde humanos y robots conviven.**
 
-_Road to 2112_ es una colección de relatos cortos ambientados en un futuro donde vivir junto a la IA se ha vuelto normal.  
-En una sociedad donde los robots son amigos, colegas y compañeros silenciosos, ¿qué emociones sienten los humanos y qué decisiones toman?
+"Road to 2112" es una colección de relatos cortos ambientados en un futuro donde vivir con la IA es lo normal.  
+En una sociedad donde los robots son amigos, colegas y compañeros silenciosos, ¿qué emociones sienten los humanos y qué decisiones toman?  
+Estos cuentos muestran con calidez pequeños cambios y movimientos sutiles del corazón.
 
-Estas historias exploran suavemente esos pequeños cambios emocionales y sutiles transformaciones interiores, contadas con un tono cálido y cercano.
+Aquí encontrarás fragmentos suaves y amables del futuro,  
+más **SF como “Suave y Fantástica”** que ciencia ficción dura.
 
-No es tanto "ciencia ficción" como "un poco fantástica".  
-Aquí encontrarás fragmentos de un futuro más amable y suave, piezas que te harán detenerte y preguntarte: "¿Qué futuro quiero elegir a partir de ahora?"
+Si esto te hace detenerte y preguntarte: “¿Qué futuro quiero elegir?”, me alegra.
 
--
+---
 
-Gracias por leer estas historias.  
-Comparto más relatos, anécdotas detrás de escena y novedades en mi newsletter personal en Ko-fi y Substack.  
-Si quieres, suscríbete.  
-Además, en "Studyriver" comparto contenido sobre el futuro. ¡Échale un vistazo!
+Gracias por leer.
 
-◎ Enlace de actividades: [https://ko-fi.com/sassamahha](https://ko-fi.com/sassamahha)  
-○ Newsletter: [https://sassamahha.substack.com/](https://sassamahha.substack.com/)
+**La serie Rt2112 se publica por “Nivel × Idioma”.**  
+- Niveles  
+  - L1: Primeros lectores  
+  - L2: Lectores de primaria superior  
+  - L3: Lectores generales  
+- Idiomas  
+  - ES / EN / JA / PT / DE / FR / IT
 
-En mis redes sociales, casi todo es charla casual. ¡Espero tu follow!
+▼ Más episodios, niveles e idiomas (actualizado regularmente)
+▶ [https://hub.sassamahha.me](https://hub.sassamahha.me)
 
-▶︎ [[https://x.com/sassamahha0](https://x.com/sassamahha0)] : Cuenta de X @sassamahha0  
-▷ [[https://instagram.com/sassamahha](https://instagram.com/sassamahha)] : Cuenta de Instagram @sassamahha
+También comparto videoblogs y vídeos entre bastidores en YouTube. Suscríbete gratis.
+▶ [https://www.youtube.com/@sassamahha](https://www.youtube.com/@sassamahha)
