@@ -1,26 +1,30 @@
 ## Posfácio
 
-**Uma história um pouco estranha, tecida em um mundo onde humanos e robôs convivem.**
+**Uma história levemente misteriosa em um mundo onde humanos e robôs vivem juntos.**
 
-_Road to 2112_ é uma coletânea de contos ambientados em um futuro onde viver com IA se tornou algo normal.  
-Numa sociedade onde os robôs são amigos, colegas e companheiros silenciosos, que emoções os humanos sentem e que escolhas fazem?
+"Road to 2112" é uma coletânea de contos ambientados em um futuro onde conviver com IA já é normal.  
+Num lugar em que robôs são amigos, colegas e companheiros silenciosos, que emoções os humanos sentem e que escolhas fazem?  
+Estas histórias mostram, com delicadeza, pequenas mudanças e nuances do coração.
 
-Essas histórias exploram de forma suave essas pequenas mudanças emocionais e transformações internas, contadas com um tom caloroso e afetuoso.
+Aqui você encontra fragmentos gentis de um futuro próximo—  
+mais **SF como “Suave e Fantástica”** do que ficção científica rígida.
 
-Não é exatamente "ficção científica", mas sim "um pouco fantástica".  
-Aqui você encontrará fragmentos de um futuro mais gentil e suave, pedacinhos que fazem a gente parar e se perguntar: "Que futuro quero escolher daqui para frente?"
+Se isso te fizer parar e pensar “Que futuro vou escolher?”, já valeu.
 
--
+---
 
-Obrigado por ler estas histórias.  
-Compartilho mais contos, bastidores e novidades na minha newsletter pessoal no Ko-fi e Substack.  
-Se quiser, inscreva-se.  
-Também compartilho conteúdos sobre o futuro no "Studyriver". Dá uma olhada!
+Obrigado por ler.
 
-◎ Link de atividades: [https://ko-fi.com/sassamahha](https://ko-fi.com/sassamahha)  
-○ Newsletter: [https://sassamahha.substack.com/](https://sassamahha.substack.com/)
+**A série Rt2112 é publicada por “Nível × Idioma”.**  
+- Níveis  
+  - L1: Leitores iniciantes  
+  - L2: Fundamental superior  
+  - L3: Leitura geral  
+- Idiomas  
+  - PT / EN / JA / ES / DE / FR / IT
 
-Minhas redes sociais são mais para bate-papos leves. Me segue lá!
+▼ Mais episódios, níveis e idiomas (atualizados regularmente)
+▶ [https://hub.sassamahha.me](https://hub.sassamahha.me)
 
-▶︎ [[https://x.com/sassamahha0](https://x.com/sassamahha0)] : Conta no X @sassamahha0  
-▷ [[https://instagram.com/sassamahha](https://instagram.com/sassamahha)] : Conta no Instagram @sassamahha
+Também compartilho V-LOGs e vídeos dos bastidores no YouTube. Sinta-se à vontade para se inscrever.
+▶ [https://www.youtube.com/@sassamahha](https://www.youtube.com/@sassamahha)
