@@ -1,26 +1,30 @@
 ## Afterword
 
-**A slightly strange tale woven in a world where humans and robots live together.**
+**A slightly mysterious story set in a world where humans and robots live together.**
 
-_Road to 2112_ is a collection of short stories set in a future where living alongside AI has become normal.  
-In a society where robots are friends, colleagues, and quiet companions, what emotions do humans feel, and what choices do they make?
+"Road to 2112" is a collection of short stories set in a future where living with AI is the norm.  
+In a society where robots are friends, coworkers, and quiet companions, what emotions do humans feel, and what choices do they make?  
+These tales gently portray subtle shifts of the heart in a warm narrative voice.
 
-These stories gently explore those subtle emotional shifts and small inner changes, told in a warm, heartfelt style.
+What you'll find here are soft, tender fragments of the future—  
+more **SF as in “Slightly Fantastic”** than Science Fiction.
 
-It’s less "science fiction" and more "slightly fantastical."  
-Here you’ll find fragments of a gentle, softer future—pieces that make you pause and wonder, "What kind of future will I choose from now on?"
+If this makes you pause and ask, “What kind of future will I choose?”, then I’m glad.
 
--
+---
 
-Thank you for reading these stories.  
-I share more stories, behind-the-scenes tidbits, and new updates through my personal newsletter on Ko-fi and Substack.  
-If you'd like, please subscribe.  
-Also, I share future-themed content on "Studyriver." Please feel free to check it out.
+Thank you for reading.
 
-◎ Link collection: [https://ko-fi.com/sassamahha](https://ko-fi.com/sassamahha)  
-○ Newsletter: [https://sassamahha.substack.com/](https://sassamahha.substack.com/)
+**The Rt2112 series is published by “Level × Language”.**  
+- Levels  
+  - L1: For young readers  
+  - L2: For upper elementary  
+  - L3: General readers  
+- Languages  
+  - EN / JA / ES / PT / DE / FR / IT
 
-My social media is mostly casual chatter. Feel free to follow!
+▼ More episodes, levels, and languages (updated regularly)  
+▶ [https://hub.sassamahha.me](https://hub.sassamahha.me)
 
-▶︎ [[https://x.com/sassamahha0](https://x.com/sassamahha0)] : X account @sassamahha0  
-▷ [[https://instagram.com/sassamahha](https://instagram.com/sassamahha)] : Instagram account @sassamahha
+I also share V-LOGs and behind-the-scenes on YouTube. Feel free to subscribe.  
+▶ [https://www.youtube.com/@sassamahha](https://www.youtube.com/@sassamahha)
